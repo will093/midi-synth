@@ -7,12 +7,24 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Midi Synthesizer</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div className="Synth">
+          <div className="Octave">
+            <div className="White-key"></div>
+            <div className="Black-key C-sharp"></div>
+            <div className="White-key"></div>
+            <div className="Black-key D-sharp"></div>
+            <div className="White-key"></div>
+            <div className="White-key"></div>
+            <div className="Black-key F-sharp"></div>
+            <div className="White-key"></div>
+            <div className="Black-key G-sharp"></div>
+            <div className="White-key"></div>
+            <div className="Black-key A-sharp"></div>
+            <div className="White-key"></div>
+          </div>
+        </div>
       </div>
     );
   }
