@@ -2,10 +2,17 @@ import React, { Component } from 'react';
 import WebAudioFontPlayer from 'webaudiofont';
 import './Synth.css';
 
+import Octave from './Octave';
+
 class Synth extends Component {
 
   audioContext;
   player = new WebAudioFontPlayer();
+
+  characterMaps = [
+    ['z', 'x', 'c', 'v', 'a', 's', 'd', 'f', 'q', 'w', 'e', 'r'],
+    ['n', 'm', ',', '.', 'h', 'j', 'k', 'l', 'y', 'u', 'i', 'o']
+  ];
 
   constructor(props) {
     super(props);
@@ -21,9 +28,6 @@ class Synth extends Component {
   }
 
   changeInstrument = (path, name) => {
-    let instr;
-    const player = new WebAudioFontPlayer();
-
     this.player.loader.startLoad(this.audioContext, path, name);
     this.player.loader.waitLoad(() => {
       const newState = {
@@ -33,8 +37,9 @@ class Synth extends Component {
     });
   }
 
-  playSound = (note) => {
-    this.player.queueWaveTable(this.audioContext, this.audioContext.destination, this.state.instr, 0, 12 * 4 + note, 0.75);
+  playSound = (tone) => {
+    this.player.queueWaveTable(this.audioContext, this.audioContext.destination, this.state.instr, 0, tone, 1, 0.1, 4);
+    console.log('Playing ' + tone);
   }
 
   render() {
@@ -43,20 +48,8 @@ class Synth extends Component {
       ?
       <div>
         <div className="Synth">
-          <div className="Octave">
-            <div className="White-key" onClick={() => this.playSound(0)}></div>
-            <div className="Black-key C-sharp" onClick={() => this.playSound(1)}></div>
-            <div className="White-key" onClick={() => this.playSound(2)}></div>
-            <div className="Black-key D-sharp" onClick={() => this.playSound(3)}></div>
-            <div className="White-key" onClick={() => this.playSound(4)}></div>
-            <div className="White-key" onClick={() => this.playSound(5)}></div>
-            <div className="Black-key F-sharp" onClick={() => this.playSound(6)}></div>
-            <div className="White-key" onClick={() => this.playSound(7)}></div>
-            <div className="Black-key G-sharp" onClick={() => this.playSound(8)}></div>
-            <div className="White-key" onClick={() => this.playSound(9)}></div>
-            <div className="Black-key A-sharp" onClick={() => this.playSound(10)}></div>
-            <div className="White-key" onClick={() => this.playSound(11)}></div>
-          </div>
+          <Octave playSound={this.playSound} characterMap={this.characterMaps[0]} pitch={5}></Octave>
+          <Octave playSound={this.playSound} characterMap={this.characterMaps[1]} pitch={6}></Octave>
         </div>
       </div>
       :
