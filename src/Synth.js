@@ -63,7 +63,7 @@ class Synth extends Component {
         </div>
         <div className="Synth">
           <Octave playSound={this.playSound} characterMap={this.characterMaps[0]} pitch={5}></Octave>
-          <MediaQuery query="(min-device-width: 768px)">
+          <MediaQuery query="(min-width: 768px)">
             <Octave playSound={this.playSound} characterMap={this.characterMaps[1]} pitch={6}></Octave>
           </MediaQuery>
         </div>
