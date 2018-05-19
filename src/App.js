@@ -9,7 +9,9 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Midi Synthesizer</h1>
         </header>
-        <Synth></Synth>
+        <div className="content">
+          <Synth></Synth>
+        </div>
       </div>
     );
   }

@@ -1,23 +1,35 @@
 .White-key {
-  height: 30vh;
+  height: 40vh;
   width: 6vw;
   border: 2px solid black;
   display: inline-block;
   cursor: pointer;
+  position: relative;
 }
 
 .White-key:active, .White-key.Active {
   background-color: #e0e0e0;
 }
 
+.Black-key p, .White-key p {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
 .Black-key {
-  height: 21vh;
+  height: 28vh;
   width: 3.6vw;
   border: 2px solid #000000;
   background-color: #000000;
   position: absolute;
   display: inline-block;
   cursor: pointer;
+  z-index: 10;
+}
+
+.Black-key p {
+  color: #ffffff;
 }
 
 .Black-key:active,  .Black-key.Active {

@@ -41,7 +41,7 @@ class Note extends Component {
   render() {
     const noteClass = classNames({[this.props.className]: true, 'Active': this.state.pressed });
     return (
-      <div className={noteClass} onClick={this.notePlayed}></div>
+      <div className={noteClass} onClick={this.notePlayed}><p>{this.props.character}</p></div>
     );
   }
 }
