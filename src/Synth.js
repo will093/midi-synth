@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import WebAudioFontPlayer from 'webaudiofont';
+import MediaQuery from 'react-responsive';
+
 import './Synth.css';
 
 import Octave from './Octave';
@@ -56,12 +58,14 @@ class Synth extends Component {
       this.state.instr
       ?
       <div className="Synth-container">
-        <div>
+        <div className="Picker">
           <InstrumentPicker instruments={this.instruments} instrumentSelected={this.instrumentChanged}></InstrumentPicker>
         </div>
         <div className="Synth">
           <Octave playSound={this.playSound} characterMap={this.characterMaps[0]} pitch={5}></Octave>
-          <Octave playSound={this.playSound} characterMap={this.characterMaps[1]} pitch={6}></Octave>
+          <MediaQuery query="(min-device-width: 768px)">
+            <Octave playSound={this.playSound} characterMap={this.characterMaps[1]} pitch={6}></Octave>
+          </MediaQuery>
         </div>
       </div>
       :

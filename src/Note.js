@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Note.css';
 import classNames from 'classnames';
+import MediaQuery from 'react-responsive';
 
 class Note extends Component {
 
@@ -41,7 +42,11 @@ class Note extends Component {
   render() {
     const noteClass = classNames({[this.props.className]: true, 'Active': this.state.pressed });
     return (
-      <div className={noteClass} onClick={this.notePlayed}><p>{this.props.character}</p></div>
+      <div className={noteClass} onClick={this.notePlayed}>
+        <MediaQuery query="(min-device-width: 1224px)">
+          <p>{this.props.character}</p>
+        </MediaQuery>
+      </div>
     );
   }
 }
