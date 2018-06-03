@@ -35,14 +35,18 @@ class Note extends Component {
     }
   };
 
-  notePlayed = () => {
+  onNotePressed = () => {
     this.props.playSound(this.props.tone);
+    this.setState({ pressed: true });
+    setTimeout(() => {
+      this.setState({ pressed: false });
+    }, 100)
   }
 
   render() {
     const noteClass = classNames({[this.props.className]: true, 'Active': this.state.pressed });
     return (
-      <div className={noteClass} onClick={this.notePlayed}>
+      <div className={noteClass} onClick={this.onNotePressed}>
         <MediaQuery query="(min-width: 1224px)">
           <p>{this.props.character}</p>
         </MediaQuery>
