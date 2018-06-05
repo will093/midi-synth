@@ -47,9 +47,7 @@ class Note extends Component {
     const noteClass = classNames({[this.props.className]: true, 'Active': this.state.pressed });
     return (
       <div className={noteClass} onClick={this.onNotePressed}>
-        <MediaQuery query="(min-width: 1224px)">
-          <p>{this.props.character}</p>
-        </MediaQuery>
+        <p>{this.props.character}</p>
       </div>
     );
   }
